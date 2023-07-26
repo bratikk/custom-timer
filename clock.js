@@ -21,17 +21,20 @@
 // 2 - Функція яка приймає два агрументи ) В середині получає усі елементи з якими працюєм, запускає setInterval з іншою функцією яка елемети запускає на сайт та викликає функцію перевірку
 // Певна дата до якої буде працювати час
 window.addEventListener("DOMContentLoaded", () => {
-	const deadLine = "2024-07-02";
+	const deadLine = "2024-03-24";
 	function getTimeClock(deadLine) {
 		let days, hours, minutes, seconds;
 		const t = Math.floor(Date.parse(deadLine) - Date.parse(new Date()));
 		if (t <= 0) {
-			(days = 0), (hours = 0), (minutes = 0), (seconds = 0);
+			days = 0;
+			hours = 0;
+			minutes = 0;
+			seconds = 0;
 		} else {
-			(days = Math.floor(t / (24 * 60 * 60 * 1000))),
-				(hours = Math.floor((t / (60 * 60 * 1000)) % 24)),
-				(minutes = Math.floor((t / 1000 / 60) % 60)),
-				(seconds = Math.floor((t / 1000) % 60));
+			days = Math.floor(t / (24 * 60 * 60 * 1000));
+			hours = Math.floor((t / (60 * 60 * 1000)) % 24);
+			minutes = Math.floor((t / 1000 / 60) % 60);
+			seconds = Math.floor((t / 1000) % 60);
 		}
 
 		return {
