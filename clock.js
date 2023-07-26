@@ -22,6 +22,7 @@
 // Певна дата до якої буде працювати час
 window.addEventListener("DOMContentLoaded", () => {
 	const deadLine = "2024-03-24";
+
 	function getTimeClock(deadLine) {
 		let days, hours, minutes, seconds;
 		const t = Math.floor(Date.parse(deadLine) - Date.parse(new Date()));
@@ -45,6 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			seconds: seconds,
 		};
 	}
+
 	function getZero(num) {
 		if (num >= 0 && num < 10) {
 			return `0${num}`;
@@ -52,14 +54,14 @@ window.addEventListener("DOMContentLoaded", () => {
 			return num;
 		}
 	}
+
 	function setClock(selector, deadLine) {
 		const boxClock = document.querySelector(selector),
 			days = boxClock.querySelector("#days"),
 			hours = boxClock.querySelector("#hours"),
 			minutes = boxClock.querySelector("#minutes"),
-			seconds = boxClock.querySelector("#seconds"),
-			timeInterval = setInterval(updateClock, 1000);
-		updateClock();
+			seconds = boxClock.querySelector("#seconds");
+
 		function updateClock() {
 			const t = getTimeClock(deadLine);
 			days.innerHTML = getZero(t.days);
@@ -70,6 +72,10 @@ window.addEventListener("DOMContentLoaded", () => {
 				clearInterval(timeInterval);
 			}
 		}
+
+		updateClock();
+		const timeInterval = setInterval(updateClock, 1000);
 	}
+
 	setClock(".boxClock", deadLine);
 });
